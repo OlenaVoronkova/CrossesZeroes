@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class CrossesZeroes {
     private static char[][] board = new char[3][3];
     private static char currentPlayer = 'X';
+    private static int currentPlayerXWins = 0;
+    private static int currentPlayerOWins = 0;
 
     public static void main(String[] args) {
         initializeBoard();
@@ -100,9 +102,15 @@ public class CrossesZeroes {
     private static void displayResult() {
         if (isWin()) {
             System.out.println("Player " + currentPlayer + " wins!");
+            if (currentPlayer == 'X') {
+                currentPlayerXWins++;
+            } else {
+                currentPlayerOWins++;
+            }
         } else {
             System.out.println("It's a draw!");
         }
+        System.out.println("Player X wins: " + currentPlayerXWins + "  Player O wins: " + currentPlayerOWins);
     }
 
     private static void switchPlayer() {
